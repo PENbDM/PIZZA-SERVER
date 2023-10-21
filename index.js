@@ -17,8 +17,14 @@ mongoose
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://mern-task-app.onrender.com"],
+  })
+);
+app.get("/", (req, res) => {
+  res.status(500).send("Hi");
+});
 app.get("/api/allpizza", PizzaController.getAll);
 app.get("/api/getpizza/:id", PizzaController.getOnePizza);
 app.post("/api/createpizza", PizzaController.create);
