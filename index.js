@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://mern-task-app.onrender.com"],
+    origin: ["http://localhost:3000", "https://mern-pizza-app.onrender.com"],
   })
 );
 app.get("/", (req, res) => {
