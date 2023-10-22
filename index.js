@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
--app.use(
+app.use(
   cors({
     origin: ["http://localhost:3000", "https://mern-pizza-app.onrender.com"],
   })
@@ -27,45 +27,45 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.status(500).send("Hi");
 });
-app.get("/api/allpizza", PizzaController.getAll);
-app.get("/api/getpizza/:id", PizzaController.getOnePizza);
-app.post("/api/createpizza", PizzaController.create);
+app.get("/allpizza", PizzaController.getAll);
+app.get("/getpizza/:id", PizzaController.getOnePizza);
+app.post("/createpizza", PizzaController.create);
 //sort by category
-app.get("/api/meatpizza", PizzaController.getPizzaMeat);
-app.get("/api/veganpizza", PizzaController.getPizzaVegan);
-app.get("/api/greelpizza", PizzaController.getPizzaGreel);
-app.get("/api/spicypizza", PizzaController.getPizzaSpicy);
-app.get("/api/closedpizza", PizzaController.getPizzaClosed);
+app.get("/meatpizza", PizzaController.getPizzaMeat);
+app.get("/veganpizza", PizzaController.getPizzaVegan);
+app.get("/greelpizza", PizzaController.getPizzaGreel);
+app.get("/spicypizza", PizzaController.getPizzaSpicy);
+app.get("/closedpizza", PizzaController.getPizzaClosed);
 //sort by categorys
 //sort by price,popular,alphabet
-app.get("/api/sortprice", PizzaController.getSortPrice);
-app.get("/api/sortraiting", PizzaController.getSortRaiting);
-app.get("/api/sorttitle", PizzaController.getSortTitle);
+app.get("/sortprice", PizzaController.getSortPrice);
+app.get("/sortraiting", PizzaController.getSortRaiting);
+app.get("/sorttitle", PizzaController.getSortTitle);
 //sort by price,popular,alphabet
 //sort by CATEGORY/SORT NEW
-app.get("/api/categorysort", PizzaController.getCategorySort);
+app.get("/categorysort", PizzaController.getCategorySort);
 //sort by CATEGORY/SORT NEW
 //cart
-app.post("/api/addPizza", CartController.addCart);
+app.post("/addPizza", CartController.addCart);
 //cart
 
 //USER//
 app.post(
-  "/api/register",
+  "/register",
   registerValidation,
   handleValidationErrors,
   UserController.register
 );
 app.post(
-  "/api/login",
+  "/login",
   loginValidation,
   handleValidationErrors,
   UserController.login
 );
-app.get("/api/user", UserController.getMe);
+app.get("/user", UserController.getMe);
 //ORDER//
-app.post("/api/order", CartController.makeOrder);
-app.get("/api/getorder", CartController.getOrder);
+app.post("/order", CartController.makeOrder);
+app.get("/getorder", CartController.getOrder);
 //ORDER//
 const PORT = process.env.PORT || 4444;
 app.listen(PORT, (err) => {
