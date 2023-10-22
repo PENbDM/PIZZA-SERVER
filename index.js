@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(
+-app.use(
   cors({
     origin: ["http://localhost:3000", "https://mern-pizza-app.onrender.com"],
   })
